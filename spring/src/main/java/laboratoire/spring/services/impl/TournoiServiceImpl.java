@@ -52,6 +52,7 @@ public class TournoiServiceImpl implements TournoiService {
             existingTournoi.setDateMiseAJour(tournoi.getDateMiseAJour());
             return tournoiRepository.save(existingTournoi);
         }
+        return null;
     }
 
     @Override
