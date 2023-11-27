@@ -2,6 +2,7 @@ package laboratoire.spring.services.impl;
 
 import laboratoire.spring.models.entities.Joueur;
 import laboratoire.spring.models.entities.Rencontre;
+import laboratoire.spring.models.entities.Tournoi;
 import laboratoire.spring.repositories.RencontreRepository;
 import laboratoire.spring.services.InscriptionService;
 import laboratoire.spring.services.RencontreService;
@@ -52,4 +53,29 @@ public class RencontreServiceImpl implements RencontreService {
         }
     }
 
+    @Override
+    public List<Rencontre> getAllRencontres() {return rencontreRepository.findAll();}
+
+    @Override
+    public Rencontre getRencontreById(Long id) {
+        return  rencontreRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public Rencontre updateRencontre(Rencontre rencontre, Long id) {
+        Rencontre existingRencontre = rencontreRepository.findById(id).orElse(null);
+        if (existingRencontre != null) {
+
+            existingRencontre.setNumeroRonde(rencontre.getNumeroRonde());
+            existingRencontre.setResultat(rencontre.getResultat());
+            return rencontreRepository.save(existingRencontre);
+        }
+        return null;
+
+    }
+
+    @Override
+    public void deleteRencontre(Long id) {
+        rencontreRepository.deleteById(id);
+    }
 }
