@@ -11,5 +11,5 @@ public interface InscriptionService {
     List<Inscription> getAllInscription();
     Inscription getInscriptionById(Long id);
     void deleteInscription(Long id);
-    static List<Joueur> getJoueursInscritsAuTournoi(Long tournoiId);
+    List<Joueur> getJoueursInscritsAuTournoi(Long tournoiId);
 }
